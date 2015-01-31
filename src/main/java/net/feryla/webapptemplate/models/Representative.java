@@ -16,7 +16,7 @@ public class Representative {
     
     private long dob;
     
-    private String party;
+    private Party party;
 
     public Representative() {
     }
@@ -46,12 +46,14 @@ public class Representative {
         this.dob = dob;
     }
 
-    public String getParty() {
+    public Party getParty() {
         return party;
     }
 
-    public void setParty(String party) {
+    public void setParty(Party party) {
         this.party = party;
     }
+
+ 
         
 }

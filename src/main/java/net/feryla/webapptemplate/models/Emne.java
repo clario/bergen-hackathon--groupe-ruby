@@ -15,6 +15,8 @@ public class Emne {
     private String emnenavn;
     private boolean isHovedEmne;
     private Integer emneId;
+    
+    
 
     public Emne() {
     }
