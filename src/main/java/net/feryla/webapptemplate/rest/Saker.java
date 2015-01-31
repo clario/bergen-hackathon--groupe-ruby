@@ -19,12 +19,11 @@ import net.feryla.webapptemplate.models.Sak;
  *
  * @author sondre
  */
-
 @Path("/saker")
 public class Saker {
-    
+
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON + "; charset=UTF-8")
     public List<Sak> getSaker(@QueryParam("emneId") Integer emneId) throws IOException {
         return new SakFactory().getSakListByEmne(emneId);
     }

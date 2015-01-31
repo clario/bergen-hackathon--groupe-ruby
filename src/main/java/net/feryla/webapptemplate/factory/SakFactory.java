@@ -51,7 +51,8 @@ public class SakFactory {
         Sak s = new Sak();
         s.setSaksId((int)map.get("id"));
         s.setEmneListe(new EmneFactory().convertEmneList(map));
-        
+        s.setTitle((String) map.get("tittel"));
+        s.setShortTitle((String) map.get("korttittel"));
         return s;
     }
 
