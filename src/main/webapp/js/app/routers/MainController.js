@@ -3,11 +3,16 @@ define([
     'underscore',
     'backbone',
     'marionette',
-], function ($, _, Backbone, Marionette) {
+    'views/SakListView',
+    'views/VotesView'
+], function ($, _, Backbone, Marionette, SakListView, VotesView) {
 
     var controller = Marionette.Controller.extend({
         root: function () {
-            App.mainLayout.main.show(new Marionette.ItemView({template: '<div>Nothing here yet</div>' }));
+            App.mainLayout.main.show(new SakListView());
+        },
+        votes: function () {
+            App.mainLayout.main.show(new VotesView());
         },
     });
 

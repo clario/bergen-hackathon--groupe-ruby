@@ -8,6 +8,8 @@ define([
     var router = Marionette.AppRouter.extend({
         appRoutes: {
             "": "root",
+            "saker": "root",
+            "voteringer": "votes",
         },
         routes: {
         },
