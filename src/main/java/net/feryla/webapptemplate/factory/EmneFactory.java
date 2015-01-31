@@ -39,12 +39,16 @@ public class EmneFactory {
 
         
         
-        List<Emne> l = new ArrayList<>();
+        List<Emne> l = convertEmneList(map);
 
+        return l;
+    }
+
+    public List<Emne> convertEmneList(Map<String, Object> map) {
+        List<Emne> l = new ArrayList<>();
         for (Map<String, Object> emne : (List<Map<String, Object>>) map.get("emne_liste")) {
             l.add(convertEmne(emne));
         }
-
         return l;
     }
 

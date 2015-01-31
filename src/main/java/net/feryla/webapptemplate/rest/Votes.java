@@ -7,9 +7,6 @@ package net.feryla.webapptemplate.rest;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;

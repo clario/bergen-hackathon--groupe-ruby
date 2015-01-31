@@ -18,7 +18,6 @@ public class Sak {
 
     public Sak(Integer saksId, List<Integer> voteringIdList, List<Emne> emneListe) {
         this.saksId = saksId;
-        this.voteringIdList = voteringIdList;
         this.emneListe = emneListe;
     }
     
@@ -26,7 +25,6 @@ public class Sak {
     
     
     private Integer saksId;
-    private List<Integer> voteringIdList;
     private List<Emne> emneListe;
 
     public Integer getSaksId() {
@@ -35,14 +33,6 @@ public class Sak {
 
     public void setSaksId(Integer saksId) {
         this.saksId = saksId;
-    }
-
-    public List<Integer> getVoteringIdList() {
-        return voteringIdList;
-    }
-
-    public void setVoteringIdList(List<Integer> voteringIdList) {
-        this.voteringIdList = voteringIdList;
     }
 
     public List<Emne> getEmneListe() {
@@ -54,7 +44,14 @@ public class Sak {
     }
     
     
-    
+    public boolean containsEmne(Integer emneId) {
+        for (Emne e: emneListe) {
+            if (e.getEmneId().equals(emneId)) {
+                return true;
+            }
+        }
+        return false;
+    }
     
     
 }
