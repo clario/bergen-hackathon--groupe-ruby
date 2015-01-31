@@ -24,38 +24,28 @@ import net.feryla.webapptemplate.models.*;
  * @author sondre
  */
 @Path("/votering")
-  @Produces(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class Votes {
-    
+
     @GET
     @Path("/{id}")
-  
+
     public List<Votering> getVote(@PathParam("id") Integer id) throws IOException {
         return new VoteringFactory().getVotering(id);
     }
 
-    
-    
     @GET
     @Path("/{id}/summary")
     public VoteringSummary getVoteSummary(@PathParam("id") Integer id) throws IOException {
-        
+
         List<Votering> votering = new VoteringFactory().getVotering(id);
-        
+
         VoteringSummary vtSummary = new VoteringSummary();
-        
-        
+
         votering.stream().forEach(p -> vtSummary.add(p.getVote()));
-  
-   
-  
+
         return vtSummary;
-        
-        
+
     }
-    
-  
-    
-    
-   
+
 }
