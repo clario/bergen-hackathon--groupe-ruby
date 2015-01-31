@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.feryla</groupId>
-    <artifactId>webapptemplate</artifactId>
+    <artifactId>hackathon</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
 
-    <name>WebAppTemplate</name>
+    <name>Hackathon</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -29,7 +29,7 @@
     </dependencies>
 
     <build>
-        <finalName>webapp</finalName>
+        <finalName>ruby</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
