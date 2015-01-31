@@ -45,7 +45,7 @@ public class VoteringFactory {
         String result = get(urlVotering);
 
         
-        HashMap<String,Object> objectMap =new ObjectMapper().readValue(result, HashMap.class);
+        HashMap<String,Object> objectMap = new ObjectMapper().readValue(result, HashMap.class);
         
         
         
