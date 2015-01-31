@@ -11,8 +11,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import net.feryla.webapptemplate.models.Representative;
+import net.feryla.webapptemplate.models.Vote;
+import net.feryla.webapptemplate.models.Votering;
 
 /**
  *
@@ -20,7 +25,20 @@ import java.util.Map;
  */
 public class VoteringFactory {
 
-    public Map<String, Object> getVotering(Integer voteringId) throws IOException {
+    public List<Votering> getVotering(Integer voteringId) throws IOException {
+        Map<String, Object> map = getVoteringMap(voteringId);
+        
+        List<Votering> l = new ArrayList<>();
+        
+        for (Map<String, Object> vote: (List<Map<String, Object>>) map.get("voteringsresultat_liste")) {
+            l.add(convertVotering(vote));
+        }
+        
+        
+        return l;
+    }
+    
+    private Map<String, Object> getVoteringMap(Integer voteringId) throws IOException {
 
         final String urlVotering = "http://data.stortinget.no/eksport/voteringsresultat?VoteringId=" + voteringId.toString() + "&format=JSON";
 
@@ -58,6 +76,26 @@ public class VoteringFactory {
         }
         
         return result;
+    }
+
+    private Votering convertVotering(Map<String, Object> vote) {
+        Votering v = new Votering();
+        Representative rep = convertRepresentative((Map<String, Object>)vote.get("representant"));
+        v.setRep(rep);
+        
+        v.setVote(Vote.FOR);
+        
+        return v;
+    }
+
+    private Representative convertRepresentative(Map<String, Object> map) {
+        Representative rep = new Representative();
+        
+        rep.setGivenName((String) map.get("fornavn"));
+        rep.setFamilyName((String) map.get("etternavn"));
+        
+        
+        return rep;
     }
 
 
