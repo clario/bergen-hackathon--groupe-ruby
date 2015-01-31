@@ -1,0 +1,48 @@
+$primaryColor: #2196f3;
+$primaryColorLight: #BBDEFB;
+$primaryColorDark: #1976D2;
+
+$accentColor: #66BB6A;
+$accentColorLight: #C8E6C9;
+$accentColorDark: #388E3C;
+
+body {
+    @extend .blackTextPrimary;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12pt;
+    background-color: #FEFEFE;
+}
+
+.primaryBg {
+    @extend .whiteTextPrimary;
+    background-color: $primaryColor;
+    border: 1px solid $primaryColorDark;
+}
+
+.primaryBg.hoverable:hover {
+    background-color: $primaryColorDark;
+}
+
+.blackTextPrimary {
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.blackTextSecondary {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.whiteTextPrimary {
+    color: rgba(255, 255, 255, 1);
+}
+
+.whiteTextSecondary {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.semiBoldText {
+    font-weight: 500;
+}
+.boldText {
+    font-weight: 700;
+}

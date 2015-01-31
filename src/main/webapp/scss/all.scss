@@ -1,0 +1,27 @@
+@import "_common.scss";
+#header {
+    @extend .primaryBg;
+    @extend .semiBoldText;
+    position: fixed;
+    top: 0px;
+    height: 42px;
+    left: 0px;
+    right: 0px;
+
+    padding-left: 24px;
+    padding-right: 24px;
+    line-height: 42px;
+}
+
+#main {
+    position: fixed;
+    top: 42px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+
+    padding: 24px;
+ 
+}
+
+
