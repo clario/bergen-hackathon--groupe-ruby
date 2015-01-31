@@ -18,7 +18,7 @@ import net.feryla.webapptemplate.models.Emne;
  *
  * @author clario
  */
-@Path("/emne")
+@Path("/emner")
 public class Emner {
     
     
