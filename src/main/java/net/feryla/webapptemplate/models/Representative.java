@@ -13,11 +13,12 @@ public class Representative {
     
     private String representativeId;
     private String givenName;
-    private String familyName;
-    
+    private String familyName;    
     private int gender;
     
+
     private Party party;
+    private String pictureUrl;
 
     public Representative() {
     }
@@ -46,6 +47,8 @@ public class Representative {
     public void setParty(Party party) {
         this.party = party;
     }
+    
+  
 
     public String getRepresentativeId() {
         return representativeId;
