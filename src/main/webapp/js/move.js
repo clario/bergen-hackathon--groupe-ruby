@@ -17,6 +17,8 @@ $('#layer1 #forVote').append(forVote.map($));
 $('#layer1 #ikkeVote').append(ikkeVote.map($));
 $('#layer1 #motVote').append(motVote.map($));
 
+d3.selectAll('rect').style('fill', 'gray');
+
 d3.selectAll('#forVote > rect')
     .transition()
     .delay(250)
