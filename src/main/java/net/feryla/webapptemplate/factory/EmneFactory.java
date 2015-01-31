@@ -57,9 +57,12 @@ public class EmneFactory {
     private Emne convertEmne(Map<String, Object> emneMap) {
 
         String emneNavn = (String) emneMap.get("navn");
-        Integer emneId = (Integer) emneMap.get("hovedemne_id");
+        Integer hovedEmneId = (Integer) emneMap.get("hovedemne_id");
+        Integer emneId = (Integer) emneMap.get("emne_id");
+        
+        boolean isHovedEmne = (boolean) emneMap.get("er_hovedemne");
 
-        Emne emne = new Emne(emneNavn, true, emneId);
+        Emne emne = new Emne(emneNavn, isHovedEmne, hovedEmneId, emneId);
 
         return emne;
 
