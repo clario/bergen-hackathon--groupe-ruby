@@ -7,7 +7,8 @@ package net.feryla.webapptemplate.models;
 public class Votering {
     
     private Representative rep;
-    private Vote vote;
+   
+    private int vote;
 
     public Votering() {
     }
@@ -20,11 +21,19 @@ public class Votering {
         this.rep = rep;
     }
 
-    public Vote getVote() {
+    /***
+     * 1 Ikkje tilstede, 2 For, 3 Mot
+     * @return 
+     */
+    public int getVote() {
         return vote;
     }
 
-    public void setVote(Vote vote) {
+     /***
+     * 1 Ikkje tilstede, 2 For, 3 Mot
+     * 
+     */
+    public void setVote(int vote) {
         this.vote = vote;
     }
  

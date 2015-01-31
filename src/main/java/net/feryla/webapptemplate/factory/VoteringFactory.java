@@ -83,7 +83,7 @@ public class VoteringFactory {
         Representative rep = convertRepresentative((Map<String, Object>)vote.get("representant"));
         v.setRep(rep);
         
-        v.setVote(Vote.FOR);
+        v.setVote((int) vote.get("votering"));
         
         return v;
     }
@@ -97,6 +97,11 @@ public class VoteringFactory {
         
         return rep;
     }
+    
+    
+    
+    
+    
 
 
  
