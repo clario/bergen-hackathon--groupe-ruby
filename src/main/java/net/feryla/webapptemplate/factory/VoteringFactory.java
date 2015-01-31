@@ -62,8 +62,6 @@ public class VoteringFactory {
         Representative rep = convertRepresentative((Map<String, Object>)vote.get("representant"));
        
         
-        
-        
         v.setRep(rep);
         
         v.setVote((int) vote.get("votering"));

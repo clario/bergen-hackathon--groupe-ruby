@@ -9,20 +9,27 @@ import java.io.IOException;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import net.feryla.webapptemplate.factory.EmneFactory;
+import net.feryla.webapptemplate.models.Emne;
 
 /**
  *
  * @author clario
  */
-@Path("/votering")
-public class Emne {
+@Path("/emne")
+public class Emner {
     
     
      @GET
- 
+     @Produces(MediaType.APPLICATION_JSON + "; charset=UTF-8")
     public List<Emne> getEmneList() throws IOException {
 
-        return null;
+         EmneFactory emnefactory = new EmneFactory();
+         
+        
+        return emnefactory.getEmneList();
         
         
     
