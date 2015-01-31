@@ -58,7 +58,7 @@ public class EmneFactory {
 
         String emneNavn = (String) emneMap.get("navn");
         Integer hovedEmneId = (Integer) emneMap.get("hovedemne_id");
-        Integer emneId = (Integer) emneMap.get("emne_id");
+        Integer emneId = (Integer) emneMap.get("id");
         
         boolean isHovedEmne = (boolean) emneMap.get("er_hovedemne");
 
