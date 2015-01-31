@@ -9,20 +9,25 @@ import java.io.IOException;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import net.feryla.webapptemplate.factory.EmneFactory;
+import net.feryla.webapptemplate.models.Emne;
 
 /**
  *
  * @author clario
  */
-@Path("/votering")
-public class Emne {
+@Path("/emne")
+public class EmneResource {
     
     
      @GET
  
     public List<Emne> getEmneList() throws IOException {
 
-        return null;
+         EmneFactory emnefactory = new EmneFactory();
+         
+        
+        return emnefactory.getEmneList();
         
         
     

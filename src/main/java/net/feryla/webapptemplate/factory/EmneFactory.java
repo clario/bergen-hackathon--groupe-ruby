@@ -34,7 +34,7 @@ public class EmneFactory {
 
     }
 
-    public List<Emne> getEmneList(Integer voteringId) throws IOException {
+    public List<Emne> getEmneList() throws IOException {
         Map<String, Object> map = getEmneMap();
 
         
