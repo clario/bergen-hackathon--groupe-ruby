@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import net.feryla.webapptemplate.factory.EmneFactory;
 import net.feryla.webapptemplate.models.Emne;
 
@@ -17,11 +19,11 @@ import net.feryla.webapptemplate.models.Emne;
  * @author clario
  */
 @Path("/emne")
-public class EmneResource {
+public class Emner {
     
     
      @GET
- 
+     @Produces(MediaType.APPLICATION_JSON + "; charset=UTF-8")
     public List<Emne> getEmneList() throws IOException {
 
          EmneFactory emnefactory = new EmneFactory();

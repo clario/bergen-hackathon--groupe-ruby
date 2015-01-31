@@ -22,7 +22,7 @@ public class EmneFactory {
 
     private Map<String, Object> getEmneMap() throws IOException {
 
-        final String url = "http://data.stortinget.no/eksport/emner";
+        final String url = "http://data.stortinget.no/eksport/emner?format=JSON";
 
         Downloader downloader = new Downloader();
 
@@ -34,6 +34,7 @@ public class EmneFactory {
 
     }
 
+    
     public List<Emne> getEmneList() throws IOException {
         Map<String, Object> map = getEmneMap();
 
@@ -41,6 +42,8 @@ public class EmneFactory {
         
         List<Emne> l = new ArrayList<>();
 
+       
+        
         for (Map<String, Object> emne : (List<Map<String, Object>>) map.get("emne_liste")) {
             l.add(convertEmne(emne));
         }
