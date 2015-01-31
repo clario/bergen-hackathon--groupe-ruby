@@ -19,10 +19,13 @@ $('#layer1 #motVote').append(motVote.map($));
 
 d3.selectAll('#forVote > rect')
     .transition()
+    .delay(250)
     .style('fill', 'green');
 d3.selectAll('#ikkeVote > rect')
     .transition()
+    .delay(250)
     .style('fill', 'gray');
 d3.selectAll('#motVote > rect')
     .transition()
+    .delay(250)
     .style('fill', 'red');
