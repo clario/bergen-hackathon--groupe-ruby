@@ -14,17 +14,28 @@ public class Emne {
     
     private String emnenavn;
     private boolean isHovedEmne;
+    private Integer hovedEmneId;
     private Integer emneId;
-    
     
 
     public Emne() {
     }
 
-    public Emne(String emnenavn, boolean isHovedEmne, Integer emneId) {
+    public Emne(String emnenavn, boolean isHovedEmne, Integer hovedEmneId, Integer emneId) {
         this.emnenavn = emnenavn;
         this.isHovedEmne = isHovedEmne;
+        this.hovedEmneId = hovedEmneId;
         this.emneId = emneId;
+    }
+
+  
+
+    public Integer getHovedEmneId() {
+        return hovedEmneId;
+    }
+
+    public void setHovedEmneId(Integer hovedEmneId) {
+        this.hovedEmneId = hovedEmneId;
     }
     
     

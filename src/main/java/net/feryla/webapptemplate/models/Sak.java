@@ -18,15 +18,14 @@ public class Sak {
 
     public Sak(Integer saksId, List<Integer> voteringIdList, List<Emne> emneListe) {
         this.saksId = saksId;
-        this.voteringIdList = voteringIdList;
         this.emneListe = emneListe;
     }
     
     
     
-    
+    private String title;
+    private String shortTitle;
     private Integer saksId;
-    private List<Integer> voteringIdList;
     private List<Emne> emneListe;
 
     public Integer getSaksId() {
@@ -35,14 +34,6 @@ public class Sak {
 
     public void setSaksId(Integer saksId) {
         this.saksId = saksId;
-    }
-
-    public List<Integer> getVoteringIdList() {
-        return voteringIdList;
-    }
-
-    public void setVoteringIdList(List<Integer> voteringIdList) {
-        this.voteringIdList = voteringIdList;
     }
 
     public List<Emne> getEmneListe() {
@@ -54,7 +45,30 @@ public class Sak {
     }
     
     
-    
+    public boolean containsEmne(Integer emneId) {
+        for (Emne e: emneListe) {
+            if (e.getHovedEmneId().equals(emneId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getShortTitle() {
+        return shortTitle;
+    }
+
+    public void setShortTitle(String shortTitle) {
+        this.shortTitle = shortTitle;
+    }
     
     
 }

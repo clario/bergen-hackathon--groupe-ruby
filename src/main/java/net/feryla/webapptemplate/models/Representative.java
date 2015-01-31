@@ -11,12 +11,14 @@ package net.feryla.webapptemplate.models;
  */
 public class Representative {
     
+    private String representativeId;
     private String givenName;
-    private String familyName;
+    private String familyName;    
+    private int gender;
     
-    private long dob;
-    
+
     private Party party;
+    private String pictureUrl;
 
     public Representative() {
     }
@@ -38,14 +40,6 @@ public class Representative {
     }
 
 
-    public long getDob() {
-        return dob;
-    }
-
-    public void setDob(long dob) {
-        this.dob = dob;
-    }
-
     public Party getParty() {
         return party;
     }
@@ -53,7 +47,22 @@ public class Representative {
     public void setParty(Party party) {
         this.party = party;
     }
+    
+  
 
- 
-        
+    public String getRepresentativeId() {
+        return representativeId;
+    }
+
+    public void setRepresentativeId(String representativeId) {
+        this.representativeId = representativeId;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
 }

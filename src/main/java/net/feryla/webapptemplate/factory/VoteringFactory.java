@@ -62,8 +62,6 @@ public class VoteringFactory {
         Representative rep = convertRepresentative((Map<String, Object>)vote.get("representant"));
        
         
-        
-        
         v.setRep(rep);
         
         v.setVote((int) vote.get("votering"));
@@ -77,6 +75,9 @@ public class VoteringFactory {
         
         rep.setGivenName((String) map.get("fornavn"));
         rep.setFamilyName((String) map.get("etternavn"));
+        rep.setRepresentativeId((String) map.get("id"));
+        rep.setGender((int) map.get("kjoenn"));
+        
         
         Party party = convertParty((Map<String,Object>) map.get("parti"));
         
