@@ -70,7 +70,7 @@ public class VoteringFactory {
         return v;
     }
 
-    private Representative convertRepresentative(Map<String, Object> map) {
+    public Representative convertRepresentative(Map<String, Object> map) {
         Representative rep = new Representative();
         
         rep.setGivenName((String) map.get("fornavn"));
@@ -78,6 +78,11 @@ public class VoteringFactory {
         rep.setRepresentativeId((String) map.get("id"));
         rep.setGender((int) map.get("kjoenn"));
         
+        Map<String,Object> fylkeMap = (Map<String,Object>) map.get("fylke");
+        
+        rep.setFylke((String) fylkeMap.get("navn"));
+        
+        rep.setEpost((String) map.get("epost"));
         
         Party party = convertParty((Map<String,Object>) map.get("parti"));
         

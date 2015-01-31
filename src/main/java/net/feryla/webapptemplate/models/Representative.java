@@ -15,14 +15,38 @@ public class Representative {
     private String givenName;
     private String familyName;    
     private int gender;
-    
-
     private Party party;
     private String pictureUrl;
+    private String fylke;
+    private String epost;
 
+ 
     public Representative() {
     }
 
+    public String getFylke() {
+        return fylke;
+    }
+
+    public void setFylke(String fylke) {
+        this.fylke = fylke;
+    }
+
+    public String getEpost() {
+        return epost;
+    }
+
+    public void setEpost(String epost) {
+        this.epost = epost;
+    }
+
+    
+    
+    
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+    
     public String getGivenName() {
         return givenName;
     }
@@ -56,6 +80,7 @@ public class Representative {
 
     public void setRepresentativeId(String representativeId) {
         this.representativeId = representativeId;
+        setPictureUrl(representativeId);
     }
 
     public int getGender() {
@@ -65,4 +90,19 @@ public class Representative {
     public void setGender(int gender) {
         this.gender = gender;
     }
+
+    private void setPictureUrl(String representativeId) {
+        this.pictureUrl = "http://data.stortinget.no/eksport/personbilde?personid=" + representativeId;
+    }
+
+    @Override
+    public String toString() {
+
+            return this.getRepresentativeId() + " " + this.getGivenName(); //To change body of generated methods, choose Tools | Templates.
+       
+        
+       
+    }
+    
+    
 }
