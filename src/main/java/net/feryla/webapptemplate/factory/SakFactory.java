@@ -61,6 +61,12 @@ public class SakFactory {
         s.setEmneListe(new EmneFactory().convertEmneList(map));
         s.setTitle((String) map.get("tittel"));
         s.setShortTitle((String) map.get("korttittel"));
+        String date = (String) map.get("sist_oppdatert_dato");
+        
+        
+        
+        
+        
         return s;
     }
 
