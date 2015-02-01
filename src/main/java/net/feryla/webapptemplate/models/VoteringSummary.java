@@ -26,6 +26,7 @@ public class VoteringSummary {
     private int countFor;
     private int countMot;
     private int countIkkeTilstede;
+    private int voteringId;
 
     public int getCountFor() {
         return countFor;
@@ -80,9 +81,14 @@ public class VoteringSummary {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
-    
+
+    public int getVoteringId() {
+        return voteringId;
+    }
+
+    public void setVoteringId(int voteringId) {
+        this.voteringId = voteringId;
+    }
     
     
     

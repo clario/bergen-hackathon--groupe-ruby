@@ -8,10 +8,10 @@ body {
 
 .primaryBg, #header {
   background-color: #2196f3;
-  border: 1px solid #1976d2; }
+  border: 1px solid #1976D2; }
 
 .primaryBg.hoverable:hover, .hoverable#header:hover {
-  background-color: #1976d2; }
+  background-color: #1976D2; }
 
 .blackTextPrimary, body, .sakContainer a {
   color: rgba(0, 0, 0, 0.87); }
@@ -47,7 +47,8 @@ body {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  padding: 24px; }
+  padding: 24px;
+  overflow-y: auto; }
 
 select {
   text-transform: capitalize; }
@@ -91,7 +92,7 @@ select {
     text-decoration: none; }
   .sakContainer .emneLabel {
     display: inline-block;
-    background-color: #c8e6c9;
+    background-color: #C8E6C9;
     padding: 4px;
     font-weight: 600;
     font-size: 9pt;

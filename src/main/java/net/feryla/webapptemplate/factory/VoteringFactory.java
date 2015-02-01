@@ -124,9 +124,9 @@ public class VoteringFactory {
         for (Map<String, Object> map : list) {
             VoteringSummary vts = new VoteringSummary((int) map.get("antall_for"), (int) map.get("antall_mot"), (int) map.get("antall_ikke_tilstede"));
             vts.setDescription((String) map.get("votering_tema"));
+            vts.setVoteringId((int) map.get("votering_id"));
             l.add(vts);
         }
-
         return l;
     }
 
