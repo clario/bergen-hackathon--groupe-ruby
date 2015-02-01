@@ -16,6 +16,9 @@ public class VoteringPartySummary {
     private int countFor;
     private int countMot;
     private int countIkkeTilstede;
+   //2 - man, 1- lady
+    private int gender;
+    
    
 
     
@@ -23,6 +26,15 @@ public class VoteringPartySummary {
     public VoteringPartySummary() {
     }
 
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    
     
     
     public VoteringPartySummary(String partyName, int countFor, int countMot, int countIkkeTilstede) {
