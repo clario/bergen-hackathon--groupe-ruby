@@ -5,7 +5,6 @@
  */
 package net.feryla.webapptemplate.models;
 
-import java.time.Instant;
 import java.util.List;
 
 /**
