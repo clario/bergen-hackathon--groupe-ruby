@@ -13,12 +13,43 @@ define([
             this.updateVotering();
         },
         events: {
-            'click .voteringListItem': 'selected'
+            'click .voteringListItem': 'selected',
+            'click .voteringDetailItem': 'selectedDetail'
         },
         selected: function (e) {
             this.$el.find(".voteringListItem").removeClass("selected");
             $(e.currentTarget).addClass("selected");
             this.updateVotering();
+        },
+        selectedDetail: function (e) {
+            this.$el.find(".voteringDetailItem").removeClass("selected");
+            $(e.currentTarget).addClass("selected");
+            this.updateDetail();
+        },
+        updateDetail: function () {
+            var self = this;
+            if (!this.perPartyView) {
+                this.perPartyView = new VotePerPartyView({el: ".voteringPerPartyContainer"});
+            }
+            var detailType = "party";
+            var perPartyModel = new Backbone.Collection();
+
+            if (detailType === "party") {
+                perPartyModel.url = "rest/votering/" + this.currentModel.get('voteringId') + "/partySummary"
+                this.perPartyView.title = "Votering per parti"
+            } else {
+                this.perPartyView.title = "Votering per kjønn"
+                perPartyModel.url = "rest/votering/" + this.currentModel.get('voteringId') + "/gendersummary"
+            }
+
+//            this.$el.find(".voteringPerPartyContainer").empty();
+
+            perPartyModel.fetch({
+                success: function () {
+                    self.perPartyView.collection = perPartyModel;
+                    self.perPartyView.render();
+                }
+            });
         },
         updateVotering: function () {
             var self = this;
@@ -27,20 +58,12 @@ define([
                 return;
             }
             var voteringIdx = this.$el.find(".voteringListItem.selected").data('id');
-            var model = new Backbone.Model(this.model.get('voteringSummaryList')[voteringIdx]);
+            this.currentModel = new Backbone.Model(this.model.get('voteringSummaryList')[voteringIdx]);
 
-            this.$el.find('.voteringDescription').empty().append(model.get('description'))
-            new VoteView({el: ".voteringContainer", model: model}).render();
+            this.$el.find('.voteringDescription').empty().append(this.currentModel.get('description'))
+            new VoteView({el: ".voteringContainer", model: this.currentModel}).render();
 
-            var perPartyModel = new Backbone.Model();
-            perPartyModel.url = "rest/votering/" + model.get('voteringId') + "/partysummary"
-            this.$el.find(".voteringPerPartyContainer").empty();
-            
-            perPartyModel.fetch({
-                success: function() {
-                    new VotePerPartyView({el: ".voteringPerPartyContainer", model: perPartyModel}).render();
-                }
-            })
+            this.updateDetail();
         },
         template: _.template(tmp)
     });

@@ -40,6 +40,10 @@ body {
   padding-left: 24px;
   padding-right: 24px;
   line-height: 42px; }
+  #header a {
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer; }
 
 #main {
   position: fixed;
@@ -132,5 +136,21 @@ select {
 #voteringContainer .voteringListContainer .voteringListItem.selected {
   background-color: #2196f3;
   color: #fff; }
+#voteringContainer .voteringPerPartyContainer {
+  width: 560px;
+  height: 400px; }
+
+.voteringDetailSelectorList {
+  margin-left: 12px; }
+  .voteringDetailSelectorList .voteringDetailItem {
+    cursor: pointer;
+    padding: 3px;
+    border-radius: 6px;
+    display: inline-block;
+    font-size: 10pt;
+    font-weight: 600; }
+  .voteringDetailSelectorList .voteringDetailItem.selected {
+    background-color: #2196f3;
+    color: #fff; }
 
 /*# sourceMappingURL=all.css.map */
