@@ -31,15 +31,20 @@ define([
             if (!this.perPartyView) {
                 this.perPartyView = new VotePerPartyView({el: ".voteringPerPartyContainer"});
             }
-            var detailType = "party";
+            
+            var selectedDetail = self.$el.find('.voteringDetailItem.selected');
+            var detailType = selectedDetail.attr('id');
             var perPartyModel = new Backbone.Collection();
 
-            if (detailType === "party") {
+            if (detailType === "partySelector") {
                 perPartyModel.url = "rest/votering/" + this.currentModel.get('voteringId') + "/partySummary"
                 this.perPartyView.title = "Votering per parti"
-            } else {
+            } else if (detailType === "genderSelector") {
+                perPartyModel.url = "rest/votering/" + this.currentModel.get('voteringId') + "/genderSummary"
                 this.perPartyView.title = "Votering per kjønn"
-                perPartyModel.url = "rest/votering/" + this.currentModel.get('voteringId') + "/gendersummary"
+            } else {
+                this.perPartyView.title = "Votering per fylke"
+                perPartyModel.url = "rest/votering/" + this.currentModel.get('voteringId') + "/countySummary"
             }
 
 //            this.$el.find(".voteringPerPartyContainer").empty();
