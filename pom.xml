@@ -34,6 +34,13 @@
         </dependency>
         
         
+            <dependency>
+            <groupId>com.github.jsimone</groupId>
+            <artifactId>webapp-runner</artifactId>
+            <version>7.0.22</version>
+            <scope>provided</scope>
+        </dependency>
+        
         <dependency>
 	<groupId>org.apache.httpcomponents</groupId>
 	<artifactId>httpclient</artifactId>
