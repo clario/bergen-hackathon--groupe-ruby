@@ -21,25 +21,25 @@ public class Sak {
         this.saksId = saksId;
         this.emneListe = emneListe;
     }
-    
-    
-    
+
+
+
     private String title;
     private String shortTitle;
     private Integer saksId;
     private List<Emne> emneListe;
-    private Instant instant;
-    
+    private long instant;
 
-    
-    public Instant getInstant() {
+
+
+    public long getInstant() {
         return instant;
     }
 
-    public void setInstant(Instant instant) {
+    public void setInstant(long instant) {
         this.instant = instant;
     }
-    
+
 
     public Integer getSaksId() {
         return saksId;
@@ -56,8 +56,8 @@ public class Sak {
     public void setEmneListe(List<Emne> emneListe) {
         this.emneListe = emneListe;
     }
-    
-    
+
+
     public boolean containsEmne(Integer emneId) {
         for (Emne e: emneListe) {
             if (e.getHovedEmneId().equals(emneId)) {
@@ -82,6 +82,6 @@ public class Sak {
     public void setShortTitle(String shortTitle) {
         this.shortTitle = shortTitle;
     }
-    
-    
+
+
 }

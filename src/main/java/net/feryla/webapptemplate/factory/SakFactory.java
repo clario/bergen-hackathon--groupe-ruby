@@ -31,7 +31,7 @@ public class SakFactory {
             HashMap<String, Object> sakMap = new ObjectMapper().readValue(get, HashMap.class);
             _sakList = convertMapToSakList(sakMap);
         }
-        
+
         List<Sak> fullList = _sakList;
 
         if (emneId != null) {
@@ -41,7 +41,7 @@ public class SakFactory {
         if (query != null && query.length() > 0) {
             fullList =  fullList.stream().filter(s -> s.getTitle().toLowerCase().contains(query.toLowerCase())).collect(Collectors.toList());
         }
-        
+
         return fullList;
     }
 
@@ -62,11 +62,8 @@ public class SakFactory {
         s.setTitle((String) map.get("tittel"));
         s.setShortTitle((String) map.get("korttittel"));
         String date = (String) map.get("sist_oppdatert_dato");
-        
-        
-        
-        
-        
+        long epoch = Long.parseLong(date.substring(6,19));
+        s.setInstant(epoch);
         return s;
     }
 
