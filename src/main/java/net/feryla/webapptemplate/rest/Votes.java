@@ -105,7 +105,10 @@ public class Votes {
         
         VoteringPartySummary boysSummary = new VoteringPartySummary();
         boysSummary.setGender(2);
+        boysSummary.setPartyCode("Mann");
         VoteringPartySummary girslSummary = new VoteringPartySummary();
+                boysSummary.setPartyCode("Kvinne");
+
         girslSummary.setGender(1);
         
         votering.stream().forEach((vt) -> {
