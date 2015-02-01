@@ -19,6 +19,7 @@ public class VoteringPartySummary {
    //2 - man, 1- lady
     private int gender;
     
+    
    
 
     

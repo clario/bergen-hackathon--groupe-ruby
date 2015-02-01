@@ -75,7 +75,7 @@ public class VoteringFactory {
 
         Map<String, Object> fylkeMap = (Map<String, Object>) map.get("fylke");
 
-        rep.setFylke((String) fylkeMap.get("navn"));
+        rep.setFylke((String) fylkeMap.get("id"));
 
         rep.setEpost((String) map.get("epost"));
 

@@ -53,9 +53,7 @@ public class Votes {
     public List<VoteringPartySummary> getVoteSummaryPerParty(@PathParam("id") Integer id) throws IOException {
 
         List<Votering> votering = new VoteringFactory().getVotering(id);
-       
-        VoteringPartySummary vtSummary = new VoteringPartySummary();
-
+      
         List<VoteringPartySummary> voteringPartySummaryList = new ArrayList<>();
         
         //PartyName, Votering
@@ -76,7 +74,6 @@ public class Votes {
         });
         
         vMap.entrySet().stream().map((entry) -> {
-            System.out.println(entry.getKey() + "/" + entry.getValue());
             return entry;
         }).map((entry) -> {
             VoteringPartySummary vtPs = new VoteringPartySummary();
@@ -94,7 +91,7 @@ public class Votes {
         return voteringPartySummaryList;
     }
     
-      @GET
+    @GET
     @Produces(MediaType.APPLICATION_JSON + "; charset=UTF-8")
     @Path("/{id}/genderSummary")
     public List<VoteringPartySummary> getVoteSummaryPerGender(@PathParam("id") Integer id) throws IOException {
@@ -124,6 +121,49 @@ public class Votes {
         genderSummaryList.add(girslSummary);
         
         return genderSummaryList;
+    }
+    
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON + "; charset=UTF-8")
+    @Path("/{id}/fylkeSummary")
+    public List<VoteringPartySummary> getVoteSummaryPerFylke(@PathParam("id") Integer id) throws IOException {
+
+        List<Votering> votering = new VoteringFactory().getVotering(id);
+        
+        List<VoteringPartySummary> voteringPartySummaryList = new ArrayList<>();
+        
+        //PartyName, Votering
+        Map<String,List<Votering>> vMap = new HashMap<>();
+        
+        votering.stream().forEach((vot) -> {
+            String fylkeRep = vot.getRep().getFylke();
+            List<Votering> vList;
+            if(vMap.get(fylkeRep) != null){
+                vList = vMap.get(fylkeRep);
+                vList.add(vot);
+                
+            }else{
+                vList = new ArrayList<>();
+                vList.add(vot);
+            }
+            vMap.put(fylkeRep, vList);
+        });
+        
+        vMap.entrySet().stream().map((entry) -> {
+            return entry;
+        }).map((entry) -> {
+            VoteringPartySummary vtPs = new VoteringPartySummary();
+            vtPs.setPartyCode(entry.getKey());
+            for(Votering v : entry.getValue()){
+                vtPs.add(v.getVote());
+            }
+            return vtPs;
+        }).forEach((vtPs) -> {
+            voteringPartySummaryList.add(vtPs);
+        });
+      return voteringPartySummaryList;
+
     }
     
     @GET
