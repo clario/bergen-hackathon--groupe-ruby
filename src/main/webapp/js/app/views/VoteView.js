@@ -15,8 +15,8 @@ define([
             this.$el.empty().append(tmp);
             this.updateVote(this.model.get('countFor'), this.model.get('countIkkeTilstede'))
         },
-         updateVote: function (f, i) {
-            d3.selectAll('rect').style('fill', 'gray');
+        updateVote: function (f, i) {
+            d3.selectAll('#layer1 > rect').style('fill', 'gray');
 
             var rects = this.$el.find('rect').sort(function (a, b) {
                 return parseInt(a.id) > parseInt(b.id) ? 1 : -1
@@ -46,7 +46,7 @@ define([
 
 
         },
-       
+
     });
 
     return View;
