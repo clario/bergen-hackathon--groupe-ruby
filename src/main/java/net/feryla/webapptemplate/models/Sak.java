@@ -5,6 +5,7 @@
  */
 package net.feryla.webapptemplate.models;
 
+import java.time.Instant;
 import java.util.List;
 
 /**
@@ -27,6 +28,18 @@ public class Sak {
     private String shortTitle;
     private Integer saksId;
     private List<Emne> emneListe;
+    private Instant instant;
+    
+
+    
+    public Instant getInstant() {
+        return instant;
+    }
+
+    public void setInstant(Instant instant) {
+        this.instant = instant;
+    }
+    
 
     public Integer getSaksId() {
         return saksId;

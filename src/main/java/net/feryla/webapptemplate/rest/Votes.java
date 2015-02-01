@@ -94,6 +94,35 @@ public class Votes {
         return voteringPartySummaryList;
     }
     
+      @GET
+    @Produces(MediaType.APPLICATION_JSON + "; charset=UTF-8")
+    @Path("/{id}/genderSummary")
+    public List<VoteringPartySummary> getVoteSummaryPerGender(@PathParam("id") Integer id) throws IOException {
+
+        List<Votering> votering = new VoteringFactory().getVotering(id);
+       
+        List<VoteringPartySummary> genderSummaryList = new ArrayList<>();
+        
+        VoteringPartySummary boysSummary = new VoteringPartySummary();
+        boysSummary.setGender(2);
+        VoteringPartySummary girslSummary = new VoteringPartySummary();
+        girslSummary.setGender(1);
+        
+        votering.stream().forEach((vt) -> {
+            //2-man, 1-lady
+            Integer gender =  vt.getRep().getGender();
+            if(gender == 2){
+                boysSummary.add(vt.getVote());
+            }else if(gender == 1){
+                girslSummary.add(vt.getVote());
+            }
+        });
+        genderSummaryList.add(boysSummary);
+        genderSummaryList.add(girslSummary);
+        
+        return genderSummaryList;
+    }
+    
     @GET
     @Path("/sak/{id}")
     @Produces(MediaType.APPLICATION_JSON)

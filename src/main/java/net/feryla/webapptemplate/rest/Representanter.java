@@ -10,7 +10,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import net.feryla.webapptemplate.factory.RepresentativeFactory;
 import net.feryla.webapptemplate.models.Representative;
@@ -30,7 +29,6 @@ public class Representanter {
     public Representative getrep(@PathParam("personId") String personId) throws IOException {
  
         return new RepresentativeFactory().getRepresentative(personId);
-    
     
     }
     
