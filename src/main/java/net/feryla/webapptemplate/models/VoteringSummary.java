@@ -21,6 +21,8 @@ public class VoteringSummary {
         
     }
     
+    private String description;
+    
     private int countFor;
     private int countMot;
     private int countIkkeTilstede;
@@ -70,6 +72,16 @@ public class VoteringSummary {
              
         
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
+    
     
     
     

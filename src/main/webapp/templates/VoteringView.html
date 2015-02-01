@@ -1,0 +1,16 @@
+<div class="voteringHeader">Votering</div>
+<div class="voteringListContainer">
+    <%
+        var i = 0;
+        _.each(voteringSummaryList, function(vst) {
+        
+        %>
+        <div data-id="<%=i%>" class="voteringListItem <%= (i=== 0 ? 'selected': '') %>">Votering <%= i+1 %></div>
+        <%
+        i++;
+        });
+    
+    %>
+</div>
+<div class="voteringDescription"></div>
+<div class="voteringContainer"></div>

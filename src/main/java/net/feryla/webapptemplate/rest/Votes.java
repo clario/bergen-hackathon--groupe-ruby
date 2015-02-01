@@ -6,6 +6,7 @@
 package net.feryla.webapptemplate.rest;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -42,7 +43,21 @@ public class Votes {
         votering.stream().forEach(p -> vtSummary.add(p.getVote()));
 
         return vtSummary;
-
+    }
+    
+    @GET
+    @Path("/sak/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public SaksVotering getSaksVotering(@PathParam("id") String saksId) throws IOException {
+        
+        SaksVotering s = new VoteringFactory().getVoteringForSak(saksId);
+        
+//        SaksVotering s = new SaksVotering();
+//        s.setVoteringDescription("Det voteres om blabla for bla");
+//        s.setVoteringSummaryList(new ArrayList<>());
+//        s.getVoteringSummaryList().add(new VoteringSummary(40, 60, 69));
+//        s.getVoteringSummaryList().add(new VoteringSummary(90, 60, 19));
+        return s;
     }
 
 }

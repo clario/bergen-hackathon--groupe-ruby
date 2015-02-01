@@ -9,6 +9,7 @@ define([
         appRoutes: {
             "": "root",
             "saker": "root",
+            "saker/:id": "sak",
             "voteringer": "votes",
         },
         routes: {

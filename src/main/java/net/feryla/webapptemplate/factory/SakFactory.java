@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import net.feryla.webapptemplate.models.Sak;
 import net.feryla.webapptemplate.util.Downloader;
 
@@ -22,16 +21,25 @@ import net.feryla.webapptemplate.util.Downloader;
  */
 public class SakFactory {
 
-    public List<Sak> getSakListByEmne(Integer emneId) throws IOException {
-        String sakUrl = "http://data.stortinget.no/eksport/saker?sesjonid=2014-2015&format=json";
-        String get = new Downloader().get(sakUrl);
+    private static List<Sak> _sakList;
 
-        HashMap<String, Object> sakMap = new ObjectMapper().readValue(get, HashMap.class);
+    public List<Sak> getSakListByEmne(Integer emneId, String query) throws IOException {
+        if (_sakList == null) {
+            String sakUrl = "http://data.stortinget.no/eksport/saker?sesjonid=2013-2014&format=json";
+            String get = new Downloader().get(sakUrl);
 
-        List<Sak> fullList = convertMapToSakList(sakMap);
+            HashMap<String, Object> sakMap = new ObjectMapper().readValue(get, HashMap.class);
+            _sakList = convertMapToSakList(sakMap);
+        }
         
+        List<Sak> fullList = _sakList;
+
         if (emneId != null) {
-            return fullList.stream().filter(s -> s.containsEmne(emneId)).collect(Collectors.toList());
+            fullList =  fullList.stream().filter(s -> s.containsEmne(emneId)).collect(Collectors.toList());
+        }
+
+        if (query != null && query.length() > 0) {
+            fullList =  fullList.stream().filter(s -> s.getTitle().toLowerCase().contains(query.toLowerCase())).collect(Collectors.toList());
         }
         
         return fullList;
@@ -39,21 +47,25 @@ public class SakFactory {
 
     private List<Sak> convertMapToSakList(HashMap<String, Object> map) {
         List<Sak> l = new ArrayList<>();
-        
-        for (Map<String, Object> s: (List<Map<String, Object>>)map.get("saker_liste")) {
+
+        for (Map<String, Object> s : (List<Map<String, Object>>) map.get("saker_liste")) {
             l.add(convertSak(s));
         }
-        
+
         return l;
     }
 
     private Sak convertSak(Map<String, Object> map) {
         Sak s = new Sak();
-        s.setSaksId((int)map.get("id"));
+        s.setSaksId((int) map.get("id"));
         s.setEmneListe(new EmneFactory().convertEmneList(map));
         s.setTitle((String) map.get("tittel"));
         s.setShortTitle((String) map.get("korttittel"));
         return s;
+    }
+
+    public Sak getSak(Integer sakId) throws IOException {
+        return getSakListByEmne(null, null).stream().filter(s -> s.getSaksId().equals(sakId)).findFirst().get();
     }
 
 }

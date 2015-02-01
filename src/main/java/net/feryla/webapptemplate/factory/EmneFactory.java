@@ -34,14 +34,17 @@ public class EmneFactory {
 
     }
 
+    private static List<Emne> _emneList;
     
     public List<Emne> getEmneList() throws IOException {
+        if (_emneList != null) {
+            return _emneList;
+        }
+        
         Map<String, Object> map = getEmneMap();
-
-        
-        
         List<Emne> l = convertEmneList(map);
 
+        _emneList = l;
         return l;
     }
 

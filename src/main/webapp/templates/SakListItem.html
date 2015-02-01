@@ -1,6 +1,11 @@
 <div class="sakContainer">
-<a href="#saker/<%= saksId%>">
-    <div><%= title%></div>
-    <div></div>
-</a>
+    <a href="#saker/<%= saksId%>">
+        <div class="title"><%= shortTitle%></div>
+        <div class="emneList">
+            <% _.each(emneListe, function(emne) {
+            %>
+            <div class="emneLabel"><%=emne.emnenavn.toLowerCase()%></div>
+             <% }) %>
+        </div>
+    </a>
 </div>

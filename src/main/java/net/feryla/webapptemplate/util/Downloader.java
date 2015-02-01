@@ -28,7 +28,7 @@ public class Downloader {
             url = new URL(urlVotering);
             conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
-            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
             while ((line = rd.readLine()) != null) {
                 result += line;
             }
