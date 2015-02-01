@@ -16,7 +16,7 @@ define([
             this.updateVote(this.model.get('countFor'), this.model.get('countIkkeTilstede'))
         },
         updateVote: function (f, i) {
-            d3.selectAll('#layer1 > rect').style('fill', 'gray');
+            d3.selectAll('#layer1 > rect').style('fill', 'gray').style('stroke', 'white');
 
             var rects = this.$el.find('rect').sort(function (a, b) {
                 return parseInt(a.id) > parseInt(b.id) ? 1 : -1
