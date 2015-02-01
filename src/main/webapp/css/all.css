@@ -109,10 +109,17 @@ select {
   /*    .voteringContainer {
           border-top: 1px solid #ddd;
       }*/ }
-  .sakViewContainer .title {
+  .sakViewContainer .titleContainer .title {
+    display: inline-block;
     padding-bottom: 6px;
     font-weight: 400;
     font-size: 14pt; }
+  .sakViewContainer .titleContainer .date {
+    font-size: 10pt;
+    font-weight: 600;
+    display: inline-block;
+    padding-bottom: 6px;
+    padding-left: 100px; }
   .sakViewContainer .description {
     padding-bottom: 6px;
     font-weight: 600;
