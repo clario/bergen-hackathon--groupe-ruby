@@ -5,8 +5,10 @@ define([
     'marionette',
     'views/VoteView',
     'views/VotePerPartyView',
-    'text!templates/VoteringView.html'
-], function ($, _, Backbone, Marionette, VoteView, VotePerPartyView, tmp) {
+    'views/VoteTableRowView',
+    'text!templates/VoteringView.html',
+    'text!templates/VoteringTable.html'
+], function ($, _, Backbone, Marionette, VoteView, VotePerPartyView, VoteTableRowView, tmp, tableTmp) {
 
     var View = Marionette.ItemView.extend({
         onRender: function () {
@@ -44,7 +46,7 @@ define([
                 this.perPartyView.title = "Votering per kjønn"
             } else {
                 this.perPartyView.title = "Votering per fylke"
-                perPartyModel.url = "rest/votering/" + this.currentModel.get('voteringId') + "/countySummary"
+                perPartyModel.url = "rest/votering/" + this.currentModel.get('voteringId') + "/fylkeSummary"
             }
 
 //            this.$el.find(".voteringPerPartyContainer").empty();
@@ -69,6 +71,23 @@ define([
             new VoteView({el: ".voteringContainer", model: this.currentModel}).render();
 
             this.updateDetail();
+            this.updateTable();
+        },
+        updateTable: function() {
+            
+            var collection = new Backbone.Collection();
+            collection.url = "rest/votering/" + this.currentModel.get('voteringId');
+            collection.fetch({
+                success: function() {
+                    new Marionette.CompositeView({
+                        collection: collection, 
+                        el: ".voteringsTable", 
+                        childView: VoteTableRowView,
+                        template: _.template(tableTmp),
+                        childViewContainer: '.tableBody'
+                    }).render()
+                }
+            });
         },
         template: _.template(tmp)
     });

@@ -3,9 +3,10 @@ define([
     'underscore',
     'backbone',
     'marionette',
+    'moment',
     'views/VoteringView',
     'text!templates/SakView.html'
-], function ($, _, Backbone, Marionette, VoteringView, tmp) {
+], function ($, _, Backbone, Marionette, moment, VoteringView, tmp) {
 
     var View = Marionette.ItemView.extend({
         template: _.template(tmp),

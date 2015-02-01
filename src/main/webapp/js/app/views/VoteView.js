@@ -34,7 +34,7 @@ define([
             d3.selectAll('#forVote > rect')
                     .transition()
                     .delay(250)
-                    .style('fill', 'green');
+                    .style('fill', '#43A047');
             d3.selectAll('#ikkeVote > rect')
                     .transition()
                     .delay(250)
@@ -42,8 +42,7 @@ define([
             d3.selectAll('#motVote > rect')
                     .transition()
                     .delay(250)
-                    .style('fill', 'red');
-
+                    .style('fill', '#E53935');
 
         },
 

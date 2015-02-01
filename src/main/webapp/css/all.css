@@ -153,4 +153,14 @@ select {
     background-color: #2196f3;
     color: #fff; }
 
+.voteringsTable {
+  padding: 12px; }
+
+.voteTableRow ul {
+  list-style: none; }
+  .voteTableRow ul li {
+    display: inline-block;
+    font-size: 10pt;
+    font-weight: 500; }
+
 /*# sourceMappingURL=all.css.map */

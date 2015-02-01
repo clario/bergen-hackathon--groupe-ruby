@@ -16,6 +16,11 @@ define([
 //                {partyId: "V", forCount: 24, motCount: 25, ikkeTilstedeCount: 100},
 //                {partyId: "A", forCount: 24, motCount: 25, ikkeTilstedeCount: 100}
 //            ]);
+            Highcharts.theme = {
+                colors: ["#43A047", "#E53935", "rgb(128, 128, 128)"]}
+            
+            Highcharts.setOptions(Highcharts.theme)
+
         },
         render: function () {
             var self = this;

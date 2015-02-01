@@ -163,4 +163,18 @@ select {text-transform:capitalize}
     }
 }
 
+.voteringsTable {
+    padding:12px;
+}
+
+.voteTableRow {
+    ul {
+        list-style: none;
+        li {
+            display: inline-block;
+            font-size: 10pt;
+            font-weight: 500;
+        }
+    }
+}
 

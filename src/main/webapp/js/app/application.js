@@ -3,16 +3,18 @@ define([
     'underscore',
     'backbone',
     'marionette',
+    'moment',
     'app/routers/MainRouter',
     'app/routers/MainController',
     'views/MainLayoutView'
-], function ($, _, Backbone, Marionette, MainRouter, MainController, MainLayoutView) {
+], function ($, _, Backbone, Marionette, moment, MainRouter, MainController, MainLayoutView) {
 
     var app = Marionette.Application.extend({
         initialize: function () {
             this.mainLayout = new MainLayoutView();
             this.controller = new MainController();
             this.router = new MainRouter({controller: this.controller});
+            this.moment = moment;
         },
         onStart: function () {
             this.mainLayout.render();
