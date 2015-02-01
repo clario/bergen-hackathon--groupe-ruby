@@ -7,7 +7,9 @@ package net.feryla.webapptemplate.rest;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -46,6 +48,53 @@ public class Votes {
     }
     
     @GET
+    @Produces(MediaType.APPLICATION_JSON + "; charset=UTF-8")
+    @Path("/{id}/partySummary")
+    public List<VoteringPartySummary> getVoteSummaryPerParty(@PathParam("id") Integer id) throws IOException {
+
+        List<Votering> votering = new VoteringFactory().getVotering(id);
+       
+        VoteringPartySummary vtSummary = new VoteringPartySummary();
+
+        List<VoteringPartySummary> voteringPartySummaryList = new ArrayList<>();
+        
+        //PartyName, Votering
+        Map<String,List<Votering>> vMap = new HashMap<>();
+        
+        votering.stream().forEach((vot) -> {
+            String partyName = vot.getRep().getParty().getName();
+            List<Votering> vList;
+            if(vMap.get(partyName) != null){
+                vList = vMap.get(partyName);
+                vList.add(vot);
+                
+            }else{
+                vList = new ArrayList<>();
+                vList.add(vot);
+            }
+            vMap.put(partyName, vList);
+        });
+        
+        vMap.entrySet().stream().map((entry) -> {
+            System.out.println(entry.getKey() + "/" + entry.getValue());
+            return entry;
+        }).map((entry) -> {
+            VoteringPartySummary vtPs = new VoteringPartySummary();
+            vtPs.setPartyName(entry.getKey());
+            for(Votering v : entry.getValue()){
+                vtPs.add(v.getVote());
+                vtPs.setPartyCode(v.getRep().getParty().getPartyId());
+            }
+            return vtPs;
+        }).forEach((vtPs) -> {
+            voteringPartySummaryList.add(vtPs);
+        });
+        
+        
+        return voteringPartySummaryList;
+    }
+    
+    @GET
     @Path("/sak/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public SaksVotering getSaksVotering(@PathParam("id") String saksId) throws IOException {
@@ -59,5 +108,8 @@ public class Votes {
 //        s.getVoteringSummaryList().add(new VoteringSummary(90, 60, 19));
         return s;
     }
+    
+    
+    
 
 }

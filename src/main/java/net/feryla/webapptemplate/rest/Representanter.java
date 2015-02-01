@@ -30,6 +30,8 @@ public class Representanter {
     public Representative getrep(@PathParam("personId") String personId) throws IOException {
  
         return new RepresentativeFactory().getRepresentative(personId);
+    
+    
     }
     
     
