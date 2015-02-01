@@ -13,7 +13,7 @@
     padding-left: 24px;
     padding-right: 24px;
     line-height: 42px;
-    
+
     a {
         text-decoration: none;
         color: #fff;
@@ -93,10 +93,20 @@ select {text-transform:capitalize}
 
 .sakViewContainer {
     padding-bottom: 6px;
-    .title {
-        padding-bottom: 6px;
-        font-weight: 400;
-        font-size: 14pt;
+    .titleContainer {
+        .title {
+            display:inline-block;   
+            padding-bottom: 6px;
+            font-weight: 400;
+            font-size: 14pt;
+        }
+        .date {
+            font-size: 10pt;
+            font-weight: 600;
+            display:inline-block;   
+            padding-bottom: 6px;
+            padding-left: 100px;
+        }
     }
 
     .description {
@@ -156,7 +166,7 @@ select {text-transform:capitalize}
         font-size: 10pt;
         font-weight: 600
     }
-    
+
     .voteringDetailItem.selected {
         background-color: $primaryColor;
         color: #fff;
